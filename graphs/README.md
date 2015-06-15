@@ -10,6 +10,7 @@ implementation. My preferred approach uses arena allocation (aka region based
 allocation) and makes slightly advanced use of explicit lifetimes. I'll finish
 up by discussing a few potential Rust features which would make using such an
 approach easier.
+
 A [graph](http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29) is a
 collection of nodes with edges between some of those nodes. Graphs are a
 generalisation of lists and trees. Each node can have multiple children and
@@ -66,11 +67,11 @@ Note that if your graph might have cycles, then if you use `Rc`, further action
 is required to break the cycles and not leak memory. Since Rust has no cycle
 collection of `Rc` pointers, if there is a cycle in your graph, the ref counts
 will never fall to zero, and the graph will never be deallocated. You can solve
-this by using `weak` pointers in your graph or by manually breaking cycles when
-you know the graph should be destroyed. The former is more reliable. We don't
-cover either here, in our examples we just leak memory. The approach using
-borrowed references and arena allocation does not have this issue and is thus
-superior in that respect.
+this by using non-owning `Weak<T>` pointers in your graph or by manually
+breaking cycles when you know the graph should be destroyed. The former is more
+reliable. We don't cover either here, in our examples we just leak memory. The
+approach using borrowed references and arena allocation does not have this issue
+and is thus superior in that respect.
 
 To compare the different approaches I'll use a pretty simple example. We'll just
 have a `Node` object to represent a node in the graph, this will hold some
@@ -88,7 +89,7 @@ combinations of possibilities: ref counting and `RefCell`, and arena allocation
 and `UnsafeCell`. I'll leave the other two combinations as an exercise.
 
 
-## Reference counting with `Rc` and dynamic borrowing with `RefCell` (`Rc<RefCell<Node>>`)
+## Reference counting and dynamic borrowing (`Rc<RefCell<Node>>`)
 
 See [full example](src/rc_graph.rs).
 
