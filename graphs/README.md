@@ -9,7 +9,7 @@ programming. In this tutorial I'm going to go over a few different approaches to
 implementation. My preferred approach uses arena allocation (aka region based
 allocation) and makes slightly advanced use of explicit lifetimes. I'll finish
 up by discussing a few potential Rust features which would make using such an
-approach easier. 
+approach easier.
 A [graph](http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29) is a
 collection of nodes with edges between some of those nodes. Graphs are a
 generalisation of lists and trees. Each node can have multiple children and
@@ -45,8 +45,8 @@ management yourself without any help from the type system. You can make very
 flexible and efficient data structures this way, but you must be very careful.
 This approach handles both the lifetime and mutability issues in one fell swoop.
 But it handles them by essentially ignoring all the benefits of Rust - you will
-get no help from the compiler here (it's also not particularly ergonomic since
-raw pointers don't automatically (de-)reference). Since a graph using raw
+get no help from the compiler here. It's also not particularly ergonomic since
+raw pointers don't automatically (de-)reference. Since a graph using raw
 pointers is not much different from a graph in C++, I'm not going to cover that
 option here.
 
