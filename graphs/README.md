@@ -88,7 +88,7 @@ combinations of possibilities: ref counting and `RefCell`, and arena allocation
 and `UnsafeCell`. I'll leave the other two combinations as an exercise.
 
 
-## `Rc<RefCell<Node>>`
+## Reference counting with `Rc` and dynamic borrowing with `RefCell` (`Rc<RefCell<Node>>`)
 
 See [full example](src/rc_graph.rs).
 
