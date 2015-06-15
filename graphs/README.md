@@ -1,7 +1,7 @@
 # Graphs and arena allocation
 
-(Note you can run the examples in this chapter by downloading this directory and
-running `cargo run`).
+(Note you can run the examples in this chapter by downloading this directory,
+using a beta or nightly tool-chain, and running `cargo run`).
 
 Graphs are a bit awkward to construct in Rust because of Rust's stringent
 lifetime and mutability requirements. Graphs of objects are very common in OO
