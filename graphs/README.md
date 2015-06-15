@@ -6,10 +6,10 @@ using a beta or nightly tool-chain, and running `cargo run`).
 Graphs are a bit awkward to construct in Rust because of Rust's stringent
 lifetime and mutability requirements. Graphs of objects are very common in OO
 programming. In this tutorial I'm going to go over a few different approaches to
-implementation. My preferred approach uses arena allocation and makes slightly
-advanced use of explicit lifetimes. I'll finish up by discussing a few potential
-Rust features which would make using such an approach easier.
-
+implementation. My preferred approach uses arena allocation (aka region based
+allocation) and makes slightly advanced use of explicit lifetimes. I'll finish
+up by discussing a few potential Rust features which would make using such an
+approach easier. 
 A [graph](http://en.wikipedia.org/wiki/Graph_%28abstract_data_type%29) is a
 collection of nodes with edges between some of those nodes. Graphs are a
 generalisation of lists and trees. Each node can have multiple children and
