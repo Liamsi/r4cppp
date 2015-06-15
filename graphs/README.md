@@ -66,7 +66,7 @@ Note that if your graph might have cycles, then if you use `Rc`, further action
 is required to break the cycles and not leak memory. Since Rust has no cycle
 collection of `Rc` pointers, if there is a cycle in your graph, the ref counts
 will never fall to zero, and the graph will never be deallocated. You can solve
-this by using `Weak` pointers in your graph or by manually breaking cycles when
+this by using `weak` pointers in your graph or by manually breaking cycles when
 you know the graph should be destroyed. The former is more reliable. We don't
 cover either here, in our examples we just leak memory. The approach using
 borrowed references and arena allocation does not have this issue and is thus
