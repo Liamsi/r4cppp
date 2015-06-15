@@ -109,7 +109,7 @@ struct Node {
 
 Creating a new node is not too bad: `Rc::new(RefCell::new(Node { ... }))`. To
 add an edge during initialisation, you have to borrow the start node as mutable,
-and clone the end node into the Vec of edges (this clones the pointer,
+and clone the end node into the `Vec` of edges (this clones the pointer,
 incrementing the reference count, not the actual node). E.g.,
 
 ```rust
